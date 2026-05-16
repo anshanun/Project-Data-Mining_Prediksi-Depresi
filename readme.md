@@ -1,102 +1,49 @@
-# 📊 Amazon E-Commerce Sales Analytics using Data Warehouse & Business Intelligence
+# 🧠 Student Depression Prediction using Data Mining
 
-A Business Intelligence and Data Warehouse project focused on analyzing Amazon e-commerce sales performance using ETL, Star Schema modeling, KPI analysis, Data Mining, and interactive dashboards.
+Predicting student depression risk based on academic, social, and lifestyle factors using Machine Learning and Data Mining approaches.
 
 ---
 
 ## 📌 Project Overview
 
-The rapid growth of e-commerce platforms has generated massive volumes of transactional data that require structured processing and analysis to support business decision-making.
+Mental health issues among university students have become an increasingly important concern, especially depression caused by academic pressure, financial stress, unhealthy lifestyles, and social challenges.
 
-This project aims to design and implement a complete Business Intelligence pipeline for Amazon e-commerce sales analysis by combining:
+This project aims to analyze and predict student depression risk using:
 
-- Data Warehouse implementation
-- ETL processes
-- KPI monitoring
-- Data Mining techniques
-- Interactive dashboard visualization
+- **Naïve Bayes Classifier** for prediction/classification
+- **K-Means Clustering** for student segmentation
+- **PCA (Principal Component Analysis)** for dimensionality reduction
+- **Interactive Dashboard Visualization** for insight presentation
 
-The project was developed as part of the Data Warehouse & Business Intelligence course at Telkom University.
+Developed as part of a Data Mining course project at Telkom University.
 
 ---
 
-## 🎯 Project Objectives
+## 🎯 Objectives
 
-- Design a structured Data Warehouse architecture for Amazon sales data
-- Implement ETL processes for centralized analytical storage
-- Analyze business performance using KPI metrics
-- Apply data mining techniques to identify trends and business insights
-- Develop an interactive dashboard for decision support
+- Predict whether a student is at risk of depression
+- Identify hidden behavioral patterns through clustering
+- Analyze academic and social factors influencing depression
+- Support early detection strategies using data-driven approaches
 
 ---
 
 ## 📂 Dataset Information
 
-| Information | Details |
+- **Source:** Kaggle
+- **Dataset:** Student Depression Dataset
+- **Total Records:** 27,901 students
+- **Features:** 13 variables
+
+### Features Included
+
+| Category | Features |
 |---|---|
-| Dataset | Amazon Sales Dataset |
-| Source | Kaggle |
-| Format | CSV |
-| Total Records | 100,000 transactions |
-| Total Columns | 20 columns |
-
-### Dataset Features
-
-| Category | Attributes |
-|---|---|
-| Customer | CustomerID, CustomerName |
-| Product | ProductID, ProductName, Category, Brand |
-| Sales | Quantity, UnitPrice, Discount, TotalAmount |
-| Transaction | OrderID, PaymentMethod, OrderStatus |
-| Location | City, State, Country |
-| Time | OrderDate |
-
----
-
-## 🏗️ Data Warehouse Architecture
-
-The project uses a **Star Schema** approach consisting of:
-
-- **Fact Table**
-  - `fact_sales`
-
-- **Dimension Tables**
-  - `dimproduct`
-  - `dim_customer`
-  - `dim_location`
-  - `dimwaktu`
-
-### ⭐ Star Schema Design
-
-<p align="center">
-  <img src="images/starschema.png" width="850">
-</p>
-
-The star schema was designed to support efficient analytical queries and KPI reporting by integrating transactional sales data with multiple business dimensions.
-
----
-
-## 🔄 ETL Process
-
-The ETL (Extract, Transform, Load) pipeline was implemented using **Pentaho Data Integration (PDI)**.
-
-### ETL Stages
-
-#### 1️⃣ Extract
-- Import raw Amazon transaction dataset
-- Retrieve sales, customer, product, and location data
-
-#### 2️⃣ Transform
-- Data cleaning
-- Duplicate handling
-- Attribute selection
-- Data aggregation
-- Dimension mapping
-- Key generation
-
-#### 3️⃣ Load
-- Load transformed data into Data Warehouse tables
-- Populate fact and dimension tables
+| Academic | Academic Pressure, CGPA, Study Satisfaction |
+| Lifestyle | Sleep Duration, Dietary Habits, Work/Study Hours |
+| Psychological | Suicidal Thoughts, Family Mental Illness History |
+| Financial | Financial Stress |
+| Demographic | Age, Gender, Degree |
 
 ---
 
@@ -104,118 +51,174 @@ The ETL (Extract, Transform, Load) pipeline was implemented using **Pentaho Data
 
 | Technology | Purpose |
 |---|---|
-| Python | Data analysis & preprocessing |
-| MySQL | Data Warehouse storage |
-| Pentaho PDI | ETL implementation |
-| Looker Studio | Dashboard visualization |
-| Scikit-learn | Data mining & modeling |
+| Python | Data processing & modeling |
 | Pandas | Data manipulation |
+| NumPy | Numerical computation |
+| Scikit-learn | Machine learning |
+| Matplotlib / Seaborn | Visualization |
+| Streamlit | Dashboard development |
 | Google Colab | Development environment |
 
 ---
 
-## 📈 Key Performance Indicators (KPI)
+## 🔄 Project Workflow
 
-The project evaluates Amazon business performance using five main KPIs.
+```text
+Data Collection
+      ↓
+Data Understanding
+      ↓
+Data Cleaning & Preprocessing
+      ↓
+Feature Encoding & Scaling
+      ↓
+Train-Test Split
+      ↓
+Naïve Bayes Classification
+      ↓
+K-Means Clustering
+      ↓
+Evaluation & Visualization
+      ↓
+Interactive Dashboard
+```
 
-| KPI | Target |
+---
+
+## 🧹 Data Preprocessing
+
+The preprocessing stage included:
+
+- Handling missing values
+- Duplicate checking
+- Outlier detection using IQR
+- One-Hot Encoding for categorical variables
+- Feature Scaling using Min-Max Scaling
+
+### Preprocessing Results
+
+| Process | Result |
 |---|---|
-| Total Revenue Growth | ≥ 8% YoY |
-| Average Order Value (AOV) | Analyze transaction value |
-| Delivery Success Rate | ≥ 90% Delivered |
-| Top Category Contribution | Top 3 categories ≥ 50% revenue |
-| Country Revenue Performance | Top 5 countries ≥ $500K |
+| Missing Values | 0 |
+| Duplicate Data | 0 |
+| Records Before Cleaning | 27,901 |
+| Records After Cleaning | 27,880 |
 
 ---
 
-## 🤖 Data Mining Implementation
+## 🤖 Machine Learning Models
 
-Several machine learning and analytical techniques were applied:
+### 1️⃣ Naïve Bayes Classification
 
-### 1️⃣ Linear Regression
-Used to analyze yearly revenue growth trends.
+Used to classify whether a student is:
 
-### 2️⃣ Logistic Regression Classification
-Used to predict delivery success rates based on order status.
+- **0 → Not Depressed**
+- **1 → Depressed**
 
-### 3️⃣ KPI Performance Analysis
-Used to evaluate whether business targets were achieved.
+#### Model Performance
 
----
+| Metric | Score |
+|---|---|
+| Accuracy | 88% |
+| Precision (Depression) | 83% |
+| Recall (Depression) | 85% |
+| F1-Score (Depression) | 84% |
 
-## 📊 KPI Analysis Results
+#### Confusion Matrix
 
-| KPI | Result | Status |
+| | Predicted Positive | Predicted Negative |
 |---|---|---|
-| Revenue Growth | Fluctuating growth trend | ❌ Not Achieved |
-| Average Order Value | $918.25 | ✅ Achieved |
-| Delivery Success Rate | 74.6% | ❌ Not Achieved |
-| Top Category Contribution | 50.30% | ✅ Achieved |
-| Country Revenue Performance | Top 5 countries > $500K | ✅ Achieved |
+| Actual Positive | 2733 | 499 |
+| Actual Negative | 569 | 1779 |
 
 ---
 
-## 🖥️ KPI Dashboard
+### 2️⃣ K-Means Clustering
 
-The interactive dashboard was developed using **Looker Studio** and connected directly to the MySQL Data Warehouse.
+K-Means clustering was applied to group students based on similar psychological and academic characteristics.
 
-### Dashboard Features
+#### Optimal Cluster Selection
 
-- Revenue trend analysis
-- Delivery performance monitoring
-- Top-selling category visualization
-- Country revenue distribution
-- KPI achievement monitoring
+- Elbow Method
+- Silhouette Score
+- Final chosen cluster: **K = 5**
 
-### 📊 Dashboard Preview
+#### Cluster Interpretation
 
-<p align="center">
-  <img src="images/dashboardkpi.png" width="850">
-</p>
-
-The dashboard provides interactive business insights for monitoring financial performance, operational effectiveness, and sales contribution across multiple product categories and regions.
+| Cluster | Description |
+|---|---|
+| Cluster 0 | Highly Vulnerable Students |
+| Cluster 1 | Relatively Stable Students |
+| Cluster 2 | Small Stable Group |
+| Cluster 3 | Vulnerable Students |
+| Cluster 4 | Students Requiring Special Attention |
 
 ---
 
-## 📌 Business Insights
+## 📊 Key Insights
 
-### Key Findings
+Important factors influencing depression risk include:
 
-- Revenue growth remains unstable across multiple years
-- Delivery success rate is below operational targets
-- Electronics, Sports & Outdoors, and Books contribute the highest revenue
-- International market performance remains strong
+- Academic Pressure
+- Sleep Duration
+- Financial Stress
+- Suicidal Thoughts
+- Study Satisfaction
 
-### Recommendations
+Students with:
+- high academic pressure,
+- short sleep duration,
+- high financial stress,
+- and suicidal thoughts
 
-- Improve logistics and delivery management
-- Optimize high-performing product categories
-- Expand marketing strategies for growth regions
-- Enhance customer retention strategies
+tended to have significantly higher depression risk.
+
+---
+
+## 📈 PCA Visualization
+
+Principal Component Analysis (PCA) was used to:
+
+- Reduce high-dimensional data
+- Improve clustering efficiency
+- Visualize student segmentation in 2D space
+
+---
+
+## 🖥️ Dashboard
+
+The interactive dashboard provides visualization for:
+
+- Depression distribution
+- Cluster segmentation
+- Mental health indicators
+- Academic pressure trends
+- Prediction insights
 
 ---
 
 ## 🚀 Future Improvements
 
-Potential future enhancements include:
+Potential future enhancements:
 
-- Real-time dashboard integration
-- Advanced forecasting models
-- Recommendation system implementation
-- Supply chain optimization analytics
-- Predictive customer behavior analysis
+- Implement Random Forest or SVM
+- Real-time mental health monitoring
+- Integration with university systems
+- Enhanced dashboard interactivity
+- Localized institutional datasets
+
+---
+
+## 👥 Contributors
+
+| Name | Role |
+|---|---|
+| Anisa Hanun | Data Analysis & Modeling |
+| Sridamai Wati Panjaitan | Research & Documentation |
+| Alya Davina Maharani | Data Processing |
+| Haipa Zuhaira | Visualization & Dashboard |
 
 ---
 
-## 🔗 Dashboard Access
-
-Dashboard Link:  
-[Dashboard KPI](https://lookerstudio.google.com/reporting/721353f3-cc20-47fb-a82c-bd2222b8c4e6)
-
----
-Report Link:
-[Report DWBI](https://drive.google.com/file/d/1ZyunOgDUl6S6zIrUe4w7u17ItZZJmRri/view?usp=sharing)
-
----
-Google Colab Link:
-[IPYNB](https://colab.research.google.com/drive/1BnpBEOiNXYFpB1ufc1q6WAlRQag_Ezjn)
+# LINK GCOLAB: https://colab.research.google.com/drive/1RLCUrSK_6QnDFKq5cBaIdvoD4SuJqRoL?usp=sharing
+# LINK LAPORAN: https://drive.google.com/file/d/1ah4UJtYBZl0kDDPrin6InRvQsg8wIaa3/view?usp=sharing
